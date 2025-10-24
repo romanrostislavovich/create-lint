@@ -1,0 +1,17 @@
+{
+    "env": { "browser": true, "es2022": true },
+    "extends": [
+        "eslint:recommended"
+        <% if (tools && tools.includes('TypeScript')) { %>, "plugin:@typescript-eslint/recommended"<% } %>
+        <% if (framework === 'React' || framework === 'Next.js') { %>, "plugin:react/recommended"<% } %>
+        <% if (framework === 'Vue') { %>, "plugin:vue/vue3-recommended"<% } %>
+        <% if (tools && tools.includes('Prettier')) { %>, "plugin:prettier/recommended"<% } %>
+    ],
+    "parser": <% if (tools && tools.includes('TypeScript')) { %>"@typescript-eslint/parser"<% } else { %>"espree"<% } %>,
+    "plugins": [
+        <% if (framework === 'React' || framework === 'Next.js') { %>"react", "react-hooks",<% } %>
+        <% if (tools && tools.includes('TypeScript')) { %>"@typescript-eslint",<% } %>
+        <% if (tools && tools.includes('Prettier')) { %>"prettier"<% } %>
+    ],
+    "rules": {}
+}

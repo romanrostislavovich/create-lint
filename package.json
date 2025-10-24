@@ -1,0 +1,52 @@
+{
+  "name": "create-linting",
+  "version": "1.1.0",
+  "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
+  "bin": {
+    "create-linting": "./dist/index.js"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "templates/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "start": "node ./dist/index.js",
+    "dev": "ts-node-esm src/index.ts",
+    "lint": "echo \"No linter configured for this package\""
+  },
+  "keywords": [
+    "eslint",
+    "prettier",
+    "stylelint",
+    "husky",
+    "lint",
+    "cli",
+    "generator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "ejs": "^3.1.9",
+    "execa": "^8.0.1",
+    "inquirer": "^9.3.2",
+    "ora": "^6.3.1"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/inquirer": "^9.0.9",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
