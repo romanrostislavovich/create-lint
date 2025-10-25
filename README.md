@@ -7,6 +7,7 @@
 [![license](https://img.shields.io/npm/l/create-linting)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node-%3E=18-blue.svg)]()
 [![made with TypeScript](https://img.shields.io/badge/TypeScript-💙-blue)]()
+![NPM Downloads](https://img.shields.io/npm/dm/create-linting)
 
 ---
 
