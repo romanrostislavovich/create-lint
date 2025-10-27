@@ -15,6 +15,13 @@ export async function installDependencies({ framework, tools, manager }: any) {
     if (framework === "React" || framework === "Next.js") deps.push("eslint-plugin-react", "eslint-plugin-react-hooks");
     if (framework === "Vue") deps.push("eslint-plugin-vue");
     if (framework === "Svelte") deps.push("eslint-plugin-svelte");
+    if (framework === "Angular") {
+      deps.push("@angular-eslint/eslint-plugin", "@angular-eslint/eslint-plugin-template", "@angular-eslint/template-parser");
+      if (!deps.includes("@typescript-eslint/parser")) {
+        deps.push("@typescript-eslint/parser", "@typescript-eslint/eslint-plugin");
+      }
+      deps.push("@angular-eslint/schematics")
+    }
 
   const spinner = ora(`Installing devDependencies via ${manager}...`).start();
 
