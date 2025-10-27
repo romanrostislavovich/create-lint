@@ -1,6 +1,6 @@
 {
   "name": "create-linting",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "repository": "https://github.com/romanrostislavovich/create-lint",
   "bugs": "https://github.com/romanrostislavovich/create-lint/issues",
   "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
