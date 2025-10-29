@@ -7,7 +7,10 @@ module.exports = {
     bracketSpacing: true,
     arrowParens: "avoid",
     endOfLine: "lf",
-    <% if (tools && tools.includes('Tailwind')) { %>
+    overrides: [
+        { files: ["*.md"], options: { proseWrap: "always" } }
+    ],
+    <% if (tools?.includes('tailwind')) { %>
         plugins: ["prettier-plugin-tailwindcss"],
     <% } %>
 };

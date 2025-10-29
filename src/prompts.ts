@@ -1,8 +1,12 @@
 import inquirer from "inquirer";
 import { presets } from "./presets.js";
 import { choosePackageManager } from "./packageManager.js";
+import {Frameworks} from "./enums/frameworks";
+import {Tools} from "./enums/tools";
 
 export async function runPrompts() {
+
+
     const { usePreset } = await inquirer.prompt([
         {
             type: "confirm",
@@ -24,18 +28,37 @@ export async function runPrompts() {
         return presets[presetName];
     }
 
+    const frameworks = [
+      Frameworks.React,
+      Frameworks.NextJS,
+      Frameworks.Vue,
+      Frameworks.Svelte,
+      Frameworks.Angular,
+      Frameworks.VanillaJS
+    ]
+
+    const tools = [
+      Tools.TypeScript,
+      Tools.Prettier,
+      Tools.Stylelint,
+      Tools.Tailwind,
+      Tools.Husky,
+      Tools.EditorConfig,
+      Tools.Jest
+    ]
+
     const answers = await inquirer.prompt([
         {
             type: "list",
             name: "framework",
             message: "Choose framework:",
-            choices: ["React", "Next.js", "Vue", "Svelte", "Angular", "Vanilla JS"]
+            choices: frameworks
         },
         {
             type: "checkbox",
             name: "tools",
             message: "Choose tools:",
-            choices: ["TypeScript", "Prettier", "Stylelint", "Tailwind", "Husky + lint-staged", "EditorConfig", "Jest"]
+            choices: tools
         },
         {
             type: "confirm",

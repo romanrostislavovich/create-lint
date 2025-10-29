@@ -1,5 +1,5 @@
 module.exports = {
-    "**/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-    "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
-    "**/*.{json,md,html}": ["prettier --write"]
+    "**/*.{js,jsx,ts,tsx}": ["eslint --fix", "<% if (tools.includes('Prettier')) { %>prettier --write<% } %>"],
+    "**/*.{css,scss,vue}": [<% if (tools.includes('Stylelint')) { %>stylelint --fix<% } %>, "<% if (tools.includes('Prettier')) { %>prettier --write<% } %>"],
+    "**/*.{json,md,html}": ["<% if (tools.includes('Prettier')) { %>prettier --write<% } %>"]
 };

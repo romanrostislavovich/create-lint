@@ -1,11 +1,12 @@
 module.exports = {
     extends: [
         "stylelint-config-standard",
-        <% if (tools && tools.includes('Prettier')) { %>"stylelint-config-prettier",<% } %>
-        <% if (tools && tools.includes('Tailwind')) { %>"stylelint-config-tailwindcss",<% } %>
+        <% if (tools?.includes('prettier')) { %>"stylelint-config-prettier",<% } %>
+        <% if (tools?.includes('tailwind')) { %>"stylelint-config-tailwindcss",<% } %>
+    ],
+    plugins: [
+        <% if (tools?.includes('tailwind')) { %>"stylelint-order",<% } %>
     ],
     rules: {
-        "color-no-invalid-hex": true,
-        "block-no-empty": true
     }
 };
