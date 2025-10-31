@@ -1,7 +1,8 @@
-
 # 🧩 create-linting
 
-> 🚀 Instantly generate professional configs for ESLint, Prettier, Stylelint, Husky, EditorConfig, and lint-staged — for **any frontend stack** (React, Vue, Next.js, Svelte, Angular, Vanilla JS) in **under 30 seconds**.
+> 🚀 Instantly generate professional configs for ESLint, Prettier, Stylelint, Husky, EditorConfig,
+> and lint-staged — for **any frontend stack** (React, Vue, Next.js, Svelte, Angular, Vanilla JS) in
+> **under 30 seconds**.
 
 [![npm version](https://img.shields.io/npm/v/create-linting.svg?style=flat&color=brightgreen)](https://www.npmjs.com/package/create-linting)
 [![license](https://img.shields.io/npm/l/create-linting)](LICENSE)
@@ -15,7 +16,7 @@
 
 `create-linting` is a CLI generator that:
 
-- 🔧 **Creates all necessary linting configs** for your project in one go  
+- 🔧 **Creates all necessary linting configs** for your project in one go
 - ⚙️ Supports **ESLint, Prettier, Stylelint, Husky + lint-staged, EditorConfig**
 - 🧠 Comes with **ready-to-use presets** (React, Next.js, Vue, Svelte, Angular, Vanilla JS)
 - 🛠️ Can **automatically install all dependencies**
@@ -36,15 +37,17 @@ create-linting
 ```
 
 The CLI will ask a few questions:
+
 - 🧱 Which framework do you use (React, Next.js, Vue, Svelte, Angular, Vanilla)
 - 🛠️ Which tools to include (TypeScript, Prettier, Stylelint, Tailwind, Husky, etc.)
 - 📦 Which package manager to use (npm / yarn / pnpm)
 - 📥 Whether to install dependencies automatically
 
 After that, it will generate config files like:
+
 ```
-.eslintrc.json
-prettier.config.cjs
+eslint.config.json
+prettier.config.mjs
 stylelint.config.js
 .editorconfig
 lint-staged.config.js
@@ -57,6 +60,7 @@ and optionally install all required `devDependencies`.
 ## 🪄 Usage Examples
 
 ### 🚀 Quick Start for Next.js
+
 ```bash
 npx create-linting
 # → Select preset "Next.js + TypeScript + Tailwind"
@@ -65,56 +69,59 @@ npx create-linting
 ```
 
 This will set up:
-- ESLint with React and TypeScript support  
-- Prettier with Tailwind plugin  
-- Husky + lint-staged pre-commit hook  
-- EditorConfig for consistent indentation  
+
+- ESLint with React and TypeScript support
+- Prettier with Tailwind plugin
+- Husky + lint-staged pre-commit hook
+- EditorConfig for consistent indentation
 
 ### 🧱 For Vue or Svelte
+
 ```bash
 npx create-linting
 # → Select "Vue + Prettier + Stylelint"
 ```
 
-It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte (`eslint-plugin-svelte`).
+It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte
+(`eslint-plugin-svelte`).
 
 ---
 
 ## 🎯 Why Every Frontend Developer Needs This
 
-| Problem | `create-linting` Solution |
-|----------|---------------------------|
-| “Setting up ESLint and Prettier is a pain” | 🪄 Everything ready in one command |
+| Problem                                    | `create-linting` Solution                   |
+| ------------------------------------------ | ------------------------------------------- |
+| “Setting up ESLint and Prettier is a pain” | 🪄 Everything ready in one command          |
 | “TypeScript always breaks my ESLint setup” | ✅ Correct parsers and rules out of the box |
-| “Too many linters and plugins to manage” | ⚙️ One CLI — total control |
-| “Team argues about code style” | 💬 Unified, shared config |
-| “Tired of setting up husky manually” | 🧠 Auto-setup for hooks and lint-staged |
+| “Too many linters and plugins to manage”   | ⚙️ One CLI — total control                  |
+| “Team argues about code style”             | 💬 Unified, shared config                   |
+| “Tired of setting up husky manually”       | 🧠 Auto-setup for hooks and lint-staged     |
 
 ---
 
 ## 💻 Supported Stacks & Tools
 
-| Category | Supported |
-|-----------|------------|
-| **Frameworks** | React, Next.js, Vue, Svelte, Angular, Vanilla JS |
-| **Languages** | JavaScript, TypeScript |
-| **Formatters** | Prettier |
-| **CSS Linters** | Stylelint (+ TailwindCSS) |
-| **Git Hooks** | Husky + lint-staged |
-| **Editor Config** | EditorConfig |
+| Category          | Supported                                        |
+| ----------------- | ------------------------------------------------ |
+| **Frameworks**    | React, Next.js, Vue, Svelte, Angular, Vanilla JS |
+| **Languages**     | JavaScript, TypeScript                           |
+| **Formatters**    | Prettier                                         |
+| **CSS Linters**   | Stylelint (+ TailwindCSS)                        |
+| **Git Hooks**     | Husky + lint-staged                              |
+| **Editor Config** | EditorConfig                                     |
 
 ---
 
 ## 🧰 Available Presets
 
-| Preset | Includes |
-|--------|-----------|
+| Preset                              | Includes                                            |
+| ----------------------------------- | --------------------------------------------------- |
 | **Next.js + TypeScript + Tailwind** | ESLint + Prettier + Tailwind + Husky + EditorConfig |
-| **React + TypeScript + Prettier** | ESLint + TS + Prettier + Husky + EditorConfig |
-| **Vue + Prettier + Stylelint** | ESLint + Stylelint + Prettier + EditorConfig |
-| **Svelte + Prettier** | ESLint + Prettier + EditorConfig |
-| **Angular + TypeScript** | ESLint + Prettier + EditorConfig |
-| **Vanilla JS + Prettier** | Lightweight base config without unnecessary noise |
+| **React + TypeScript + Prettier**   | ESLint + TS + Prettier + Husky + EditorConfig       |
+| **Vue + Prettier + Stylelint**      | ESLint + Stylelint + Prettier + EditorConfig        |
+| **Svelte + Prettier**               | ESLint + Prettier + EditorConfig                    |
+| **Angular + TypeScript**            | ESLint + Prettier + EditorConfig                    |
+| **Vanilla JS + Prettier**           | Lightweight base config without unnecessary noise   |
 
 ---
 
@@ -131,6 +138,7 @@ It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte (`e
 ## 🌍 Why Developers Love It
 
 Because:
+
 - It accelerates project setup (especially in teams)
 - Ensures consistent linting and formatting
 - Saves hours of configuration time
@@ -140,11 +148,11 @@ Because:
 
 ## 💡 Roadmap
 
-- [ ] Add **Biome** (formerly Rome) support  
-- [ ] Add **Nuxt 3 + Tailwind** preset  
-- [ ] Custom templates support (`--template path/to/templates`)  
-- [ ] Generate `.lintingrc` with metadata  
-- [ ] Publish to GitHub Marketplace as an Action  
+- [ ] Add **Biome** (formerly Rome) support
+- [ ] Add **Nuxt 3 + Tailwind** preset
+- [ ] Custom templates support (`--template path/to/templates`)
+- [ ] Generate `.lintingrc` with metadata
+- [ ] Publish to GitHub Marketplace as an Action
 
 ---
 
@@ -158,6 +166,7 @@ npm run dev
 ```
 
 Modify code in `src/`, build with `npm run build`, and test using:
+
 ```bash
 npx ts-node-esm src/index.ts
 ```
@@ -188,5 +197,6 @@ by [Your Name / Nickname]
 
 ## ✨ TL;DR — Why You Should Try It Right Now
 
-> 🧩 `create-linting` = 30 seconds → a project with perfectly configured ESLint, Prettier, Stylelint, Husky, and EditorConfig  
+> 🧩 `create-linting` = 30 seconds → a project with perfectly configured ESLint, Prettier,
+> Stylelint, Husky, and EditorConfig  
 > No conflicts. No manual setup. Just ✨ “clean code out of the box.”

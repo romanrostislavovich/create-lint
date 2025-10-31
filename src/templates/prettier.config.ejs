@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     semi: true,
     singleQuote: true,
     trailingComma: "all",
@@ -10,7 +10,7 @@ module.exports = {
     overrides: [
         { files: ["*.md"], options: { proseWrap: "always" } }
     ],
-    <% if (tools?.includes('tailwind')) { %>
+    <% if (tools?.includes('Tailwind')) { %>
         plugins: ["prettier-plugin-tailwindcss"],
     <% } %>
 };

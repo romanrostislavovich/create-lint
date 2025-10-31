@@ -1,21 +1,33 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import { execa } from "execa";
-import ejs from "ejs";
+import fs from 'node:fs';
+import path from 'node:path';
+import cp from 'node:child_process';
+import ejs from 'ejs';
+import { Prompt } from '../interfaces/prompt.js';
 
-export async function setupHusky(options: any) {
-    const tplLint = await fs.readFile(path.resolve("./src/templates/lint-staged.config.ejs"), "utf8");
-    const tplHusky = await fs.readFile(path.resolve("./src/templates/husky-pre-commit.ejs"), "utf8");
-    const outLint = ejs.render(tplLint, options);
-    const outHusky = ejs.render(tplHusky, options);
-    await fs.writeFile("lint-staged.config.js", outLint, "utf8");
-    await fs.writeFile(".husky/pre-commit", outHusky, "utf8");
+export async function setupHusky(options: Prompt) {
+  const tplLint = fs.readFileSync(path.resolve('./src/templates/lint-staged.config.ejs'), 'utf8');
+  const tplHusky = fs.readFileSync(path.resolve('./src/templates/husky-pre-commit.ejs'), 'utf8');
+  const outLint = ejs.render(tplLint, options);
+  const outHusky = ejs.render(tplHusky, options);
 
-    try {
-        await execa("npx", ["husky", "install"], { stdio: "inherit" });
-        await execa("npx", ["husky", "add", ".husky/pre-commit", "npx lint-staged"], { stdio: "inherit" });
-        console.log("Husky hooks installed");
-    } catch (err) {
-        console.warn("Husky setup failed; run `npx husky install` manually.");
+  try {
+    fs.writeFileSync('lint-staged.config.js', outLint, 'utf8');
+  } catch (e) {
+    console.error(e);
+  }
+
+  try {
+    cp.execSync('npx husky init');
+    cp.execSync('npx lint staged');
+
+    if (!fs.existsSync('.husky')) {
+      fs.mkdirSync('.husky');
     }
+
+    fs.writeFileSync('.husky/pre-commit', outHusky, 'utf8');
+    console.log('Husky hooks installed');
+  } catch (e) {
+    console.error(e);
+    console.warn('Husky setup failed; run `npx husky install` manually.');
+  }
 }

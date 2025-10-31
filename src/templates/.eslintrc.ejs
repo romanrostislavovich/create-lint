@@ -1,79 +1,13 @@
-{
-    "root": true,
-    "env": {
-        "es2022": true,
-        "node": true,
-        "browser": true,
-        "jest": <%= linters.includes('testing') ? 'true' : 'false' %>
+import { defineConfig } from "eslint/config";
+import eslint from '@eslint/js';
+<% if (tools?.includes('TypeScript') || framework?.includes('Angular')) { %>import tseslint from 'typescript-eslint'; <% } else { %><% } %>
+<% if (tools?.includes('Prettier')) { %>import prettierRecommended from 'eslint-plugin-prettier/recommended'; <% } else { %><% } %>
+
+export default defineConfig([
+    {
+        ignores: ["dist/**"],
     },
-    "parser": "<% if (tools && tools.includes('TypeScript')) { %>@typescript-eslint/parser<% } else { %>espree<% } %>",
-    "parserOptions": {
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    <% if (framework === 'React' || framework === 'NextJS') { %>
-        "ecmaFeatures": { "jsx": true },
-    <% } %>
-    <% if (tools && tools.includes('TypeScript')) { %>
-        "project": "./tsconfig.json",
-        "tsconfigRootDir": "<%= process.cwd() %>"
-    <% } %>
-    },
-    "plugins": [
-        <% if (tools && tools.includes('Prettier')) { %>"prettier",<% } %>
-        <% if (framework === 'React' || framework === 'Next.js') { %>"react","react-hooks","jsx-a11y",<% } %>
-        <% if (framework === 'Vue') { %>"vue",<% } %>
-        <% if (framework === 'Svelte') { %>"svelte",<% } %>
-        <% if (framework === 'Angular') { %>"@angular-eslint",<% } %>
-    ],
-    "extends": [
-        "eslint:recommended",
-        <% if (tools && tools.includes('Prettier')) { %>"plugin:prettier/recommended",<% } %>
-        <% if (tools && tools.includes('TypeScript')) { %>"plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/recommended-requiring-type-checking",<% } %>
-        <% if (framework === 'React' || framework === 'NextJS') { %>"plugin:react/recommended", "plugin:react-hooks/recommended",<% } %>
-        <% if (framework === 'Vue') { %>"plugin:vue/vue3-recommended",<% } %>
-        <% if (framework === 'Svelte') { %>"plugin:svelte/recommended",<% } %>
-        <% if (framework === 'Angular') { %>"plugin:@angular-eslint/recommended",<% } %>
-    ],
-    "settings": {
-        <% if (framework === 'React' || framework === 'NextJS') { %>
-            "react": { "version": "detect" },
-        <% } %>
-        "import/resolver": {
-            "node": { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"] }
-        }
-    },
-    "overrides": [
-        {
-            "files": ["*.ts", "*.tsx"],
-            "rules": {
-                "<% if (tools && tools.includes('TypeScript')) { %>\"@typescript-eslint/no-unused-vars\": [\"error\", { \"argsIgnorePattern\": \"^_\" }],<% } %>"
-            }
-        },
-        <% if (framework === 'Angular') { %>
-            {
-                "files": ["*.ts"],
-                "parser": "@typescript-eslint/parser",
-                "extends": ["plugin:@angular-eslint/recommended"],
-                "rules": {}
-            },
-            {
-                "files": ["*.html"],
-                "parser": "@angular-eslint/template-parser",
-                "extends": ["plugin:@angular-eslint/template/recommended"],
-                "rules": {}
-            },
-        <% } %>
-        {
-            "files": ["*.svelte"],
-            "processor": "svelte3/svelte3"
-        }
-    ],
-    "rules": {
-        "no-console": ["warn", { "allow": ["warn", "error"] }],
-        "no-debugger": "warn",
-        "unicorn/prevent-abbreviations": "off",
-        <% if (tools && tools.includes('Prettier')) { %>
-            "prettier/prettier": ["error", { "singleQuote": true, "semi": true }],
-        <% } %>
-    }
-}
+    eslint.configs.recommended,
+    <% if (tools?.includes('TypeScript') || framework?.includes('Angular')) { %>tseslint.configs.recommended,<% } else { %><% } %>
+    <% if (tools?.includes('Prettier')) { %>prettierRecommended, <% } else { %><% } %>
+]);

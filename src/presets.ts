@@ -1,32 +1,36 @@
-export const presets: Record<string, any> = {
-    "Next.js + TypeScript + Tailwind": {
-        framework: "Next.js",
-        tools: ["TypeScript", "Prettier", "Tailwind", "Husky + lint-staged", "EditorConfig"],
-        installDeps: true
-    },
-    "React + TypeScript + Prettier": {
-        framework: "React",
-        tools: ["TypeScript", "Prettier", "Husky + lint-staged", "EditorConfig"],
-        installDeps: true
-    },
-    "Vue + Prettier + Stylelint": {
-        framework: "Vue",
-        tools: ["Prettier", "Stylelint", "Husky + lint-staged", "EditorConfig"],
-        installDeps: true
-    },
-    "Svelte + Prettier": {
-        framework: "Svelte",
-        tools: ["Prettier", "EditorConfig"],
-        installDeps: true
-    },
-    "Angular + TypeScript": {
-        framework: "Angular",
-        tools: ["TypeScript", "Prettier", "EditorConfig"],
-        installDeps: false
-    },
-    "Vanilla JS + Prettier": {
-        framework: "Vanilla JS",
-        tools: ["Prettier", "EditorConfig"],
-        installDeps: false
-    }
+import { Prompt } from './interfaces/prompt.js';
+import { Frameworks } from './enums/frameworks.js';
+import { Tools } from './enums/tools.js';
+
+export const presets: Record<string, Prompt> = {
+  'Next.js + TypeScript + Tailwind': {
+    framework: Frameworks.NextJS,
+    tools: [Tools.TypeScript, Tools.Prettier, Tools.Tailwind, Tools.Husky, Tools.EditorConfig],
+    installDeps: true,
+  },
+  'React + TypeScript + Prettier': {
+    framework: Frameworks.React,
+    tools: [Tools.TypeScript, Tools.Prettier, Tools.Husky, Tools.EditorConfig],
+    installDeps: true,
+  },
+  'Vue + Prettier + Stylelint': {
+    framework: Frameworks.Vue,
+    tools: [Tools.Prettier, Tools.Stylelint, Tools.Husky, Tools.EditorConfig],
+    installDeps: true,
+  },
+  'Svelte + Prettier': {
+    framework: Frameworks.Svelte,
+    tools: [Tools.Prettier, Tools.EditorConfig],
+    installDeps: true,
+  },
+  'Angular + TypeScript': {
+    framework: Frameworks.Angular,
+    tools: [Tools.TypeScript, Tools.Prettier, Tools.EditorConfig],
+    installDeps: false,
+  },
+  'Vanilla JS + Prettier': {
+    framework: Frameworks.VanillaJS,
+    tools: [Tools.Prettier, Tools.EditorConfig],
+    installDeps: false,
+  },
 };

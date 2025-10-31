@@ -1,74 +1,75 @@
-import inquirer from "inquirer";
-import { presets } from "./presets.js";
-import { choosePackageManager } from "./packageManager.js";
-import {Frameworks} from "./enums/frameworks";
-import {Tools} from "./enums/tools";
+import inquirer from 'inquirer';
+import { presets } from './presets.js';
+import { choosePackageManager } from './packageManager.js';
+import { Frameworks } from './enums/frameworks.js';
+import { Tools } from './enums/tools.js';
+import { Prompt } from './interfaces/prompt.js';
+import { PackageManagers } from './enums/package-managers.js';
 
-export async function runPrompts() {
+const frameworks = [
+  Frameworks.Vue,
+  Frameworks.React,
+  Frameworks.NextJS,
+  Frameworks.Svelte,
+  Frameworks.Angular,
+  Frameworks.VanillaJS,
+];
 
+const tools = [
+  Tools.TypeScript,
+  Tools.Prettier,
+  Tools.Stylelint,
+  Tools.Tailwind,
+  Tools.Husky,
+  Tools.EditorConfig,
+  Tools.Jest,
+];
 
-    const { usePreset } = await inquirer.prompt([
-        {
-            type: "confirm",
-            name: "usePreset",
-            message: "Use a preset configuration?",
-            default: true
-        }
+export async function runPrompts(): Promise<Prompt & { manager: PackageManagers }> {
+  const { usePreset } = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'usePreset',
+      message: 'Use a preset configuration?',
+      default: true,
+    },
+  ]);
+
+  let answers;
+  if (usePreset) {
+    const { presetName } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'presetName',
+        message: 'Choose a preset:',
+        choices: Object.keys(presets),
+      },
     ]);
+    answers = presets[presetName];
+  }
 
-    if (usePreset) {
-        const { presetName } = await inquirer.prompt([
-            {
-                type: "list",
-                name: "presetName",
-                message: "Choose a preset:",
-                choices: Object.keys(presets)
-            }
-        ]);
-        return presets[presetName];
-    }
+  answers = await inquirer.prompt<Prompt>([
+    {
+      type: 'list',
+      name: 'framework',
+      message: 'Choose framework:',
+      choices: frameworks,
+    },
+    {
+      type: 'checkbox',
+      name: 'tools',
+      message: 'Choose tools:',
+      choices: tools,
+    },
+    {
+      type: 'confirm',
+      name: 'installDeps',
+      message: 'Install devDependencies automatically?',
+      default: true,
+    },
+  ]);
 
-    const frameworks = [
-      Frameworks.React,
-      Frameworks.NextJS,
-      Frameworks.Vue,
-      Frameworks.Svelte,
-      Frameworks.Angular,
-      Frameworks.VanillaJS
-    ]
+  const manager: PackageManagers = await choosePackageManager();
 
-    const tools = [
-      Tools.TypeScript,
-      Tools.Prettier,
-      Tools.Stylelint,
-      Tools.Tailwind,
-      Tools.Husky,
-      Tools.EditorConfig,
-      Tools.Jest
-    ]
-
-    const answers = await inquirer.prompt([
-        {
-            type: "list",
-            name: "framework",
-            message: "Choose framework:",
-            choices: frameworks
-        },
-        {
-            type: "checkbox",
-            name: "tools",
-            message: "Choose tools:",
-            choices: tools
-        },
-        {
-            type: "confirm",
-            name: "installDeps",
-            message: "Install devDependencies automatically?",
-            default: true
-        }
-    ]);
-
-    const manager = await choosePackageManager();
-
-    return { ...answers, manager };
+  return { ...answers, manager };
 }
