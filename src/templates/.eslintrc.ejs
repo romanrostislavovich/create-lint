@@ -2,6 +2,12 @@ import { defineConfig } from "eslint/config";
 import eslint from '@eslint/js';
 <% if (tools?.includes('TypeScript') || framework?.includes('Angular')) { %>import tseslint from 'typescript-eslint'; <% } else { %><% } %>
 <% if (tools?.includes('Prettier')) { %>import prettierRecommended from 'eslint-plugin-prettier/recommended'; <% } else { %><% } %>
+<% if (framework?.includes('React')) { %>
+import reactEslint from 'eslint-plugin-react';
+import reactHooksEslint from 'eslint-plugin-react-hooks';
+<% } else { %><% } %>
+<% if (framework?.includes('Vue')) { %>import pluginVueEslint from 'eslint-plugin-vue';<% } else { %><% } %>
+<% if (framework?.includes('Svelte')) { %>import svelteEslint from 'eslint-plugin-svelte';<% } else { %><% } %>
 
 export default defineConfig([
     {
@@ -10,4 +16,14 @@ export default defineConfig([
     eslint.configs.recommended,
     <% if (tools?.includes('TypeScript') || framework?.includes('Angular')) { %>tseslint.configs.recommended,<% } else { %><% } %>
     <% if (tools?.includes('Prettier')) { %>prettierRecommended, <% } else { %><% } %>
+    <% if (framework?.includes('React')) { %>
+    reactEslint.configs.flat.recommended,
+    reactHooksEslint.configs.flat.recommended,
+    <% } else { %><% } %>
+    <% if (framework?.includes('Vue')) { %>
+    ...pluginVueEslint.configs['flat/recommended'],
+    <% } else { %><% } %>
+    <% if (framework?.includes('Svelte')) { %>
+    ...svelte.configs.recommended,
+    <% } else { %><% } %>
 ]);

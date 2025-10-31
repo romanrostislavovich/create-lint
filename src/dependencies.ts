@@ -37,10 +37,6 @@ export async function installDependencies({
       '@angular-eslint/eslint-plugin-template',
       '@angular-eslint/template-parser',
     );
-
-    if (!deps.includes('@typescript-eslint/parser')) {
-      deps.push('@typescript-eslint/parser', '@typescript-eslint/eslint-plugin');
-    }
   }
 
   const spinner = ora(`Installing devDependencies via ${manager}...`).start();
