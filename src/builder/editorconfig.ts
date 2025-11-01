@@ -1,10 +1,5 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import ejs from 'ejs';
+import { EsjRender } from '../utils/esj-render.js';
 
 export async function buildEditorConfig() {
-  const tpl = await fs.readFile(path.resolve('./src/templates/.editorconfig.ejs'), 'utf8');
-  const out = ejs.render(tpl, {});
-  await fs.writeFile('.editorconfig', out, 'utf8');
-  console.log('Created .editorconfig');
+  EsjRender('.editorconfig.ejs', '.editorconfig');
 }

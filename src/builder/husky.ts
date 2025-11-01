@@ -3,10 +3,17 @@ import path from 'node:path';
 import cp from 'node:child_process';
 import ejs from 'ejs';
 import { Prompt } from '../interfaces/prompt.js';
+import { fileURLToPath } from 'node:url';
 
 export async function setupHusky(options: Prompt) {
-  const tplLint = fs.readFileSync(path.resolve('./src/templates/lint-staged.config.ejs'), 'utf8');
-  const tplHusky = fs.readFileSync(path.resolve('./src/templates/husky-pre-commit.ejs'), 'utf8');
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  const filePathTplLint = path.resolve(__dirname, './../', 'templates', 'lint-staged.config.ejs');
+  const filePathTplHusky = path.resolve(__dirname, './../', 'templates', 'husky-pre-commit.ejs');
+
+  const tplLint = fs.readFileSync(filePathTplLint, 'utf8');
+  const tplHusky = fs.readFileSync(filePathTplHusky, 'utf8');
   const outLint = ejs.render(tplLint, options);
   const outHusky = ejs.render(tplHusky, options);
 

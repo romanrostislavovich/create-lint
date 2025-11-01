@@ -12,5 +12,6 @@
     "strict": true,
     "skipLibCheck": true
   },
+  "assets": ["src/templates/**/*"],
   "include": ["src/**/*"]
 }
