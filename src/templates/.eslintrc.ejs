@@ -8,6 +8,7 @@ import reactHooksEslint from 'eslint-plugin-react-hooks';
 <% } else { %><% } %>
 <% if (framework?.includes('Vue')) { %>import pluginVueEslint from 'eslint-plugin-vue';<% } else { %><% } %>
 <% if (framework?.includes('Svelte')) { %>import svelteEslint from 'eslint-plugin-svelte';<% } else { %><% } %>
+<% if (framework?.includes('Jest')) { %> import jestEslint from 'eslint-plugin-jest'; <% } else { %><% } %>
 
 export default defineConfig([
     {
@@ -16,6 +17,11 @@ export default defineConfig([
     eslint.configs.recommended,
     <% if (tools?.includes('TypeScript') || framework?.includes('Angular')) { %>tseslint.configs.recommended,<% } else { %><% } %>
     <% if (tools?.includes('Prettier')) { %>prettierRecommended, <% } else { %><% } %>
+    <% if (tools?.includes('Jest')) { %>
+    {
+        ...jest.configs['flat/recommended'],
+    },
+    <% } else { %><% } %>
     <% if (framework?.includes('React')) { %>
     reactEslint.configs.flat.recommended,
     reactHooksEslint.configs.flat.recommended,

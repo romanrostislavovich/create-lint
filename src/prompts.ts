@@ -12,7 +12,7 @@ const frameworks = [
   Frameworks.NextJS,
   Frameworks.Svelte,
   Frameworks.Angular,
-  Frameworks.VanillaJS,
+  Frameworks.VanillaJSorTS,
 ];
 
 const tools = [
@@ -35,7 +35,6 @@ export async function runPrompts(): Promise<Prompt & { manager: PackageManagers 
     },
   ]);
 
-  let answers;
   if (usePreset) {
     const { presetName } = await inquirer.prompt([
       {
@@ -45,10 +44,14 @@ export async function runPrompts(): Promise<Prompt & { manager: PackageManagers 
         choices: Object.keys(presets),
       },
     ]);
-    answers = presets[presetName];
+    const answers = presets[presetName];
+
+    const manager: PackageManagers = await choosePackageManager();
+
+    return { ...answers, manager };
   }
 
-  answers = await inquirer.prompt<Prompt>([
+  const answers = await inquirer.prompt<Prompt>([
     {
       type: 'list',
       name: 'framework',

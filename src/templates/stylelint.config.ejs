@@ -1,11 +1,10 @@
-module.exports = {
+export default {
     extends: [
         "stylelint-config-standard",
-        <% if (tools?.includes('Prettier')) { %>"stylelint-config-prettier",<% } %>
         <% if (tools?.includes('Tailwind')) { %>"stylelint-config-tailwindcss",<% } %>
     ],
     plugins: [
-        <% if (tools?.includes('Tailwind')) { %>"stylelint-order",<% } %>
+        "stylelint-order",
     ],
     rules: {
     }

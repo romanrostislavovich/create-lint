@@ -28,8 +28,8 @@ export const presets: Record<string, Prompt> = {
     tools: [Tools.TypeScript, Tools.Prettier, Tools.EditorConfig],
     installDeps: false,
   },
-  'Vanilla JS + Prettier': {
-    framework: Frameworks.VanillaJS,
+  'Vanilla JS/TS + Prettier': {
+    framework: Frameworks.VanillaJSorTS,
     tools: [Tools.Prettier, Tools.EditorConfig],
     installDeps: false,
   },

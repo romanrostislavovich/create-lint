@@ -13,30 +13,43 @@ export async function installDependencies({
 }: Prompt & { manager: PackageManagers }) {
   const deps = ['eslint', '@eslint/js'];
 
-  if (tools?.includes(Tools.TypeScript)) deps.push('typescript-eslint');
-  if (tools?.includes(Tools.Prettier))
-    deps.push(
-      'prettier',
-      'eslint-config-prettier',
-      'eslint-plugin-prettier',
-      'stylelint-config-prettier',
-    );
-  if (tools?.includes(Tools.Stylelint)) deps.push('stylelint', 'stylelint-config-standard');
-  if (tools?.includes(Tools.Tailwind))
-    deps.push('prettier-plugin-tailwindcss', 'stylelint-config-tailwindcss', 'stylelint-order');
-  if (tools?.includes(Tools.Husky)) deps.push('husky', 'lint-staged');
-  if (tools?.includes(Tools.Jest)) deps.push('eslint-plugin-jest');
+  // Tools dependencies
+  if (tools?.includes(Tools.TypeScript)) {
+    deps.push('typescript-eslint');
+  }
 
+  if (tools?.includes(Tools.Prettier)) {
+    deps.push('prettier', 'eslint-config-prettier', 'eslint-plugin-prettier');
+  }
+
+  if (tools?.includes(Tools.Husky)) {
+    deps.push('husky', 'lint-staged');
+  }
+
+  if (tools?.includes(Tools.Stylelint)) {
+    deps.push('stylelint', 'stylelint-config-standard', 'stylelint-order');
+  }
+
+  if (tools?.includes(Tools.Tailwind) && tools?.includes(Tools.Stylelint)) {
+    deps.push('stylelint-config-tailwindcss');
+  }
+
+  if (tools?.includes(Tools.Tailwind) && tools?.includes(Tools.Prettier)) {
+    deps.push('prettier-plugin-tailwindcss');
+  }
+
+  if (tools?.includes(Tools.Jest)) {
+    deps.push('eslint-plugin-jest');
+  }
+
+  // Frameworks dependencies
   if (framework === Frameworks.React || framework === Frameworks.NextJS)
     deps.push('eslint-plugin-react', 'eslint-plugin-react-hooks');
   if (framework === Frameworks.Vue) deps.push('eslint-plugin-vue');
   if (framework === Frameworks.Svelte) deps.push('eslint-plugin-svelte');
+
   if (framework === Frameworks.Angular) {
-    deps.push(
-      '@angular-eslint/eslint-plugin',
-      '@angular-eslint/eslint-plugin-template',
-      '@angular-eslint/template-parser',
-    );
+    deps.push('@angular-eslint/eslint-plugin', '@angular-eslint/eslint-plugin-template');
   }
 
   const spinner = ora(`Installing devDependencies via ${manager}...`).start();

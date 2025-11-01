@@ -1,10 +1,10 @@
-import { execa } from 'execa';
 import inquirer from 'inquirer';
+import cp from 'node:child_process';
 import { PackageManagers } from './enums/package-managers.js';
 
 async function isInstalled(cmd: string): Promise<boolean> {
   try {
-    await execa(cmd, ['--version']);
+    cp.execSync(`${cmd} --version`);
     return true;
   } catch {
     return false;
@@ -44,18 +44,19 @@ export async function choosePackageManager(): Promise<PackageManagers> {
 
 export function getPackageManagerCommands(manager: string) {
   switch (manager) {
-    case 'yarn':
+    case PackageManagers.yarn:
       return {
         installDev: ['add', '-D'],
         run: ['run'],
         exec: ['exec'],
       };
-    case 'pnpm':
+    case PackageManagers.pnpm:
       return {
         installDev: ['add', '-D'],
         run: ['run'],
         exec: ['exec'],
       };
+    case PackageManagers.npm:
     default:
       return {
         installDev: ['i', '-D'],
