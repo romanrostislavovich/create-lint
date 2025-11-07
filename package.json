@@ -1,6 +1,6 @@
 {
   "name": "create-linting",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "repository": "https://github.com/romanrostislavovich/create-lint",
   "bugs": "https://github.com/romanrostislavovich/create-lint/issues",
   "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
@@ -20,6 +20,7 @@
     "dev": "ts-node-esm src/index.ts",
     "lint": "echo \"No linter configured for this package\"",
     "prepare": "husky",
+    "lint:markdown": "markdownlint-cli2 -c ./.markdownlint.json",
     "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/"
   },
   "keywords": [
@@ -41,21 +42,23 @@
     "ora": "^6.3.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
+    "@eslint/js": "^9.39.1",
     "@types/ejs": "^3.1.5",
     "@types/inquirer": "^9.0.9",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "copyfiles": "^2.4.1",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
+    "markdownlint": "^0.39.0",
+    "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.6.2",
     "stylelint-config-prettier": "^9.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
-    "typescript-eslint": "^8.46.2"
+    "typescript-eslint": "^8.46.3"
   }
 }

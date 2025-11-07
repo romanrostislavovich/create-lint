@@ -16,13 +16,14 @@ const frameworks = [
 ];
 
 const tools = [
-  Tools.TypeScript,
-  Tools.Prettier,
-  Tools.Stylelint,
-  Tools.Tailwind,
   Tools.Husky,
-  Tools.EditorConfig,
   Tools.Jest,
+  Tools.Prettier,
+  Tools.Tailwind,
+  Tools.Stylelint,
+  Tools.TypeScript,
+  Tools.EditorConfig,
+  Tools.MarkdownLint,
 ];
 
 export async function runPrompts(): Promise<Prompt & { manager: PackageManagers }> {

@@ -7,4 +7,5 @@ export enum Tools {
   Stylelint = 'Stylelint',
   TypeScript = 'TypeScript',
   EditorConfig = 'EditorConfig',
+  MarkdownLint = 'MarkdownLint',
 }

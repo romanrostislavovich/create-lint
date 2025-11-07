@@ -42,6 +42,10 @@ export async function installDependencies({
     deps.push('eslint-plugin-jest');
   }
 
+  if (tools?.includes(Tools.MarkdownLint)) {
+    deps.push('markdownlint', 'markdownlint-cli2');
+  }
+
   // Frameworks dependencies
   if (framework === Frameworks.React || framework === Frameworks.NextJS)
     deps.push('eslint-plugin-react', 'eslint-plugin-react-hooks');
