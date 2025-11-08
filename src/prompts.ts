@@ -20,6 +20,7 @@ const tools = [
   Tools.Jest,
   Tools.Prettier,
   Tools.Tailwind,
+  Tools.HTMLHint,
   Tools.Stylelint,
   Tools.TypeScript,
   Tools.EditorConfig,
