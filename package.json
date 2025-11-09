@@ -1,6 +1,6 @@
 {
   "name": "create-linting",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "repository": "https://github.com/romanrostislavovich/create-lint",
   "bugs": "https://github.com/romanrostislavovich/create-lint/issues",
   "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
@@ -24,7 +24,8 @@
     "lint:html": "htmlhint **/*.html",
     "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/",
     "lint:eslint": "eslint --fix",
-    "format:prettier": "prettier --write"
+    "format:prettier": "prettier --write",
+    "lint:style": "stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix"
   },
   "keywords": [
     "eslint",
@@ -60,6 +61,9 @@
     "markdownlint": "^0.39.0",
     "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.6.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-order": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.46.3"

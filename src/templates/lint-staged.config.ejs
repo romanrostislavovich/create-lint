@@ -1,6 +1,6 @@
 export default {
     "**/*.{js,jsx,ts,tsx,svelte}": ["eslint --fix"<% if (tools.includes('Prettier')) { %>, "prettier --write"<% } %>],
-    "**/*.{css,scss,vue}": [<% if (tools.includes('Stylelint')) { %>"stylelint --fix" ,<% } %> "<% if (tools.includes('Prettier')) { %>prettier --write<% } %>"],
+    "**/*.{css,scss,sass}": [<% if (tools.includes('Stylelint')) { %>"stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix" ,<% } %> "<% if (tools.includes('Prettier')) { %>prettier --write<% } %>"],
     "**/*.{json}": [<% if (tools.includes('Prettier')) { %>"prettier --write"<% } %>],
     "**/*.{md}": [<% if (tools.includes('MarkdownLint')) { %>"markdownlint-cli2 -c ./.markdownlint.json"<% } %>],
     "**/*.{html}": [<% if (tools.includes('HTMLhint')) { %>"htmlhint **/*.html"<% } %>]
