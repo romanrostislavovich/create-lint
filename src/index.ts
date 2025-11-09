@@ -4,6 +4,8 @@ import chalk from 'chalk';
 import ora from 'ora';
 import { runPrompts } from './prompts.js';
 import { generateConfigs } from './generator.js';
+import { installDependencies } from './dependencies.js';
+import { updatePackageJSON } from './packageJSON.js';
 
 (async function main() {
   console.log(chalk.cyanBright('\n🧩 create-linting — Linting config generator\n'));
@@ -13,6 +15,12 @@ import { generateConfigs } from './generator.js';
     spinner = ora('Generating configs...').start();
     await generateConfigs(answers);
     spinner.succeed('Done — configs have been created ✅');
+    spinner = ora('Install dependencies...').start();
+    if (answers.installDeps) await installDependencies(answers);
+    spinner.succeed('Done — dependencies have been installed ✅');
+    spinner = ora('Add commands to package.json...').start();
+    if (answers.lintCommand) updatePackageJSON(answers);
+    spinner.succeed('Done — commands have been added ✅');
     console.log(chalk.green('Check the generated files in the current directory.'));
   } catch (err) {
     spinner?.fail('Error during config generation');

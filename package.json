@@ -22,7 +22,9 @@
     "prepare": "husky",
     "lint:markdown": "markdownlint-cli2 -c ./.markdownlint.json",
     "lint:html": "htmlhint **/*.html",
-    "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/"
+    "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/",
+    "lint:eslint": "eslint --fix",
+    "format:prettier": "prettier --write"
   },
   "keywords": [
     "eslint",
@@ -58,7 +60,6 @@
     "markdownlint": "^0.39.0",
     "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.6.2",
-    "stylelint-config-prettier": "^9.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.46.3"

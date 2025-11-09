@@ -27,7 +27,9 @@ const tools = [
   Tools.MarkdownLint,
 ];
 
-export async function runPrompts(): Promise<Prompt & { manager: PackageManagers }> {
+export async function runPrompts(): Promise<
+  Prompt & { lintCommand: boolean } & { manager: PackageManagers }
+> {
   const { usePreset } = await inquirer.prompt([
     {
       type: 'confirm',
@@ -71,7 +73,17 @@ export async function runPrompts(): Promise<Prompt & { manager: PackageManagers 
       },
     ]);
   }
+
   const manager: PackageManagers = await choosePackageManager();
 
-  return { ...answers, manager };
+  const { lintCommand } = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'lintCommand',
+      message: 'Add command to package.json?',
+      default: true,
+    },
+  ]);
+
+  return { ...answers, lintCommand, manager };
 }
