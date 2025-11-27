@@ -6,10 +6,10 @@ export enum Tools {
   Tailwind = 'Tailwind',
   HTMLHint = 'HTMLhint',
   Stylelint = 'Stylelint',
-  CommitLint = 'CommitLint',
   TypeScript = 'TypeScript',
   EditorConfig = 'EditorConfig',
   MarkdownLint = 'MarkdownLint',
   OxFmt = 'OxFmt',
   OxLint = 'OxLint',
+  CommitLint = 'CommitLint',
 }
