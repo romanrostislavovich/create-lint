@@ -138,24 +138,10 @@ It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte
 
 ---
 
-## 🌍 Why Developers Love It
-
-Because:
-
-- It accelerates project setup (especially in teams)
-- Ensures consistent linting and formatting
-- Saves hours of configuration time
-- Has a clean interface with smart prompts
-
----
-
 ## 💡 Roadmap
 
-- [ ] Add **Biome** (formerly Rome) support
 - [ ] Add **Nuxt 3 + Tailwind** preset
-- [ ] Custom templates support (`--template path/to/templates`)
 - [ ] Generate `.lintingrc` with metadata
-- [ ] Publish to GitHub Marketplace as an Action
 
 ---
 

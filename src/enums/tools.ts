@@ -10,4 +10,6 @@ export enum Tools {
   TypeScript = 'TypeScript',
   EditorConfig = 'EditorConfig',
   MarkdownLint = 'MarkdownLint',
+  OxFmt = 'OxFmt',
+  OxLint = 'OxLint',
 }

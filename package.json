@@ -1,11 +1,14 @@
 {
   "name": "create-linting",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "repository": "https://github.com/romanrostislavovich/create-lint",
   "bugs": "https://github.com/romanrostislavovich/create-lint/issues",
   "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
   "bin": {
     "create-linting": "./dist/index.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "main": "dist/index.js",
