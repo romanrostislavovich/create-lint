@@ -13,10 +13,10 @@ export async function generateConfigs(answers: Prompt & { manager: PackageManage
   // always create eslint
   await buildESLintConfig(answers);
 
+  if (answers.tools?.includes(Tools.Husky)) await setupHusky(answers);
   if (answers.tools?.includes(Tools.Prettier)) await buildPrettierConfig(answers);
+  if (answers.tools?.includes(Tools.HTMLHint)) await buildHtmlhintConfig(answers);
   if (answers.tools?.includes(Tools.Stylelint)) await buildStylelintConfig(answers);
   if (answers.tools?.includes(Tools.EditorConfig)) await buildEditorConfig();
-  if (answers.tools?.includes(Tools.Husky)) await setupHusky(answers);
   if (answers.tools?.includes(Tools.MarkdownLint)) await buildMarkdownLintConfig(answers);
-  if (answers.tools?.includes(Tools.HTMLHint)) await buildHtmlhintConfig(answers);
 }

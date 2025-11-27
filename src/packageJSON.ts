@@ -3,14 +3,18 @@ import { Tools } from './enums/tools.js';
 import { Prompt } from './interfaces/prompt.js';
 import { PackageManagers } from './enums/package-managers.js';
 
+const commandNameForAllPackages = 'lint';
+
 const commandRunDictionary = new Map<Tools, string>([
+  [Tools.EsLint, 'eslint --fix'],
   [Tools.Prettier, 'prettier --write'],
   [Tools.HTMLHint, 'htmlhint **/*.html'],
-  [Tools.MarkdownLint, 'markdownlint-cli2 -c ./.markdownlint.json'],
   [Tools.Stylelint, 'stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix'],
+  [Tools.MarkdownLint, 'markdownlint-cli2 -c ./.markdownlint.json'],
 ]);
 
 const commandNameDictionary = new Map<Tools, string>([
+  [Tools.EsLint, 'lint:eslint'],
   [Tools.HTMLHint, 'lint:html'],
   [Tools.Prettier, 'format:prettier'],
   [Tools.Stylelint, 'lint:style'],
@@ -29,7 +33,9 @@ export function getPackageJSON() {
 export function updatePackageJSON(answers: Prompt & { manager: PackageManagers }) {
   const packageJSON = getPackageJSON();
 
-  packageJSON.scripts['lint:eslint'] = 'eslint --fix';
+  packageJSON.scripts[commandNameDictionary.get(Tools.EsLint) || ''] = commandRunDictionary.get(
+    Tools.EsLint,
+  );
 
   if (answers?.tools.includes(Tools.Stylelint)) {
     packageJSON.scripts[commandNameDictionary.get(Tools.Stylelint) || ''] =
@@ -52,6 +58,21 @@ export function updatePackageJSON(answers: Prompt & { manager: PackageManagers }
     packageJSON.scripts[commandNameDictionary.get(Tools.MarkdownLint) || ''] =
       commandRunDictionary.get(Tools.MarkdownLint);
   }
+
+  const commandForAllLint = answers.tools
+    .reduce(
+      (acum, tool) => {
+        const command = commandNameDictionary.get(tool);
+        if (command) {
+          acum.push(command);
+        }
+        return acum;
+      },
+      [commandNameDictionary.get(Tools.EsLint)],
+    )
+    .join(' && ');
+
+  packageJSON.scripts[commandNameForAllPackages] = commandForAllLint;
 
   fs.writeFileSync('./package.json', JSON.stringify(packageJSON, null, 2));
 }

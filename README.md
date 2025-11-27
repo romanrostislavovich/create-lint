@@ -6,13 +6,13 @@
 
 [![npm version](https://img.shields.io/npm/v/create-linting.svg?style=flat&color=brightgreen)](https://www.npmjs.com/package/create-linting)
 [![license](https://img.shields.io/npm/l/create-linting)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node-%3E=18-blue.svg)]()
-[![made with TypeScript](https://img.shields.io/badge/TypeScript-💙-blue)]()
+![Node.js](https://img.shields.io/badge/Node-%3E=18-blue.svg)
+![made with TypeScript](https://img.shields.io/badge/TypeScript-💙-blue)
 ![NPM Downloads](https://img.shields.io/npm/dm/create-linting)
 
 ---
 
-## 🧠 What is it?
+## What is it? 🧠
 
 `create-linting` is a CLI generator that:
 
@@ -22,6 +22,7 @@
 - 🛠️ Can **automatically install all dependencies**
 - 💡 Works with **npm / yarn / pnpm** (your choice)
 - ✨ Fully built with **TypeScript** — safe, reliable, and modern
+- ⚙️ Can be added command to package.json file
 
 ---
 
@@ -42,15 +43,17 @@ The CLI will ask a few questions:
 - 🛠️ Which tools to include (TypeScript, Prettier, Stylelint, Tailwind, Husky, etc.)
 - 📦 Which package manager to use (npm / yarn / pnpm)
 - 📥 Whether to install dependencies automatically
+- ⚙️ Whether to add commands to `package.json`
 
 After that, it will generate config files like:
 
-```
+```files
 eslint.config.json
 prettier.config.mjs
 stylelint.config.js
 .editorconfig
 lint-staged.config.js
+...
 ```
 
 and optionally install all required `devDependencies`.
