@@ -23,6 +23,7 @@ const tools = [
   Tools.HTMLHint,
   Tools.Stylelint,
   Tools.TypeScript,
+  Tools.CommitLint,
   Tools.EditorConfig,
   Tools.MarkdownLint,
 ];

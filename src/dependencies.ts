@@ -18,6 +18,10 @@ export async function installDependencies({
     deps.push('typescript-eslint');
   }
 
+  if (tools?.includes(Tools.CommitLint)) {
+    deps.push('@commitlint/config-conventional', '@commitlint/cli');
+  }
+
   if (tools?.includes(Tools.Prettier)) {
     deps.push('prettier', 'eslint-config-prettier', 'eslint-plugin-prettier');
   }
