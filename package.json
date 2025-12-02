@@ -18,13 +18,13 @@
     "prepack": "npm run build",
     "start": "node ./dist/index.js",
     "dev": "ts-node-esm src/index.ts",
-    "lint": "lint:eslint && format:prettier && lint:markdown",
+    "lint": "npm run lint:eslint && npm run format:prettier && npm run lint:markdown",
     "prepare": "husky",
     "lint:markdown": "markdownlint-cli2 -c ./.markdownlint.json",
     "lint:html": "htmlhint **/*.html",
     "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/",
     "lint:eslint": "eslint --fix",
-    "format:prettier": "prettier --write",
+    "format:prettier": "prettier --write --check .",
     "lint:style": "stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix"
   },
   "keywords": [

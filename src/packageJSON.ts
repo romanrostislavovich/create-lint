@@ -7,7 +7,7 @@ const commandNameForAllPackages = 'lint';
 
 const commandRunDictionary = new Map<Tools, string>([
   [Tools.EsLint, 'eslint --fix'],
-  [Tools.Prettier, 'prettier --write'],
+  [Tools.Prettier, 'prettier --write --check .'],
   [Tools.HTMLHint, 'htmlhint **/*.html'],
   [Tools.Stylelint, 'stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix'],
   [Tools.MarkdownLint, 'markdownlint-cli2 -c ./.markdownlint.json'],
@@ -64,11 +64,11 @@ export function updatePackageJSON(answers: Prompt & { manager: PackageManagers }
       (acum, tool) => {
         const command = commandNameDictionary.get(tool);
         if (command) {
-          acum.push(command);
+          acum.push(`npm run ${command}`);
         }
         return acum;
       },
-      [commandNameDictionary.get(Tools.EsLint)],
+      [`npm run ${commandNameDictionary.get(Tools.EsLint)}`],
     )
     .join(' && ');
 

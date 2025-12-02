@@ -104,15 +104,15 @@ It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte
 
 ## 💻 Supported Stacks & Tools
 
-| Category          | Supported                                        |
-| ----------------- |--------------------------------------------------|
-| **Frameworks**    | React, Next.js, Vue, Svelte, Angular, Vanilla JS |
-| **Languages**     | JavaScript, TypeScript                           |
-| **Formatters**    | Prettier                                         |
-| **CSS Linters**   | Stylelint (+ TailwindCSS)                        |
-| **Git Hooks**     | Husky + lint-staged, CommitLint                  |
-| **Editor Config** | EditorConfig                                     |
- | **Mardown linters** | MarkdownLint                                     |
+| Category            | Supported                                        |
+| ------------------- | ------------------------------------------------ |
+| **Frameworks**      | React, Next.js, Vue, Svelte, Angular, Vanilla JS |
+| **Languages**       | JavaScript, TypeScript                           |
+| **Formatters**      | Prettier                                         |
+| **CSS Linters**     | Stylelint (+ TailwindCSS)                        |
+| **Git Hooks**       | Husky + lint-staged, CommitLint                  |
+| **Editor Config**   | EditorConfig                                     |
+| **Mardown linters** | MarkdownLint                                     |
 
 ---
 
