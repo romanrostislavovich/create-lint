@@ -4,6 +4,7 @@ import cp from 'node:child_process';
 import ejs from 'ejs';
 import { Prompt } from '../interfaces/prompt.js';
 import { fileURLToPath } from 'node:url';
+import { Tools } from '../enums/tools.js';
 
 export async function setupHusky(options: Prompt) {
   const __filename = fileURLToPath(import.meta.url);
