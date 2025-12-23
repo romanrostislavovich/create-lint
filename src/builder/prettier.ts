@@ -1,20 +1,22 @@
-import { Prompt } from '../interfaces/prompt.js';
-import { EsjRender } from '../utils/esj-render.js';
 import { PackageJsonFile } from '../utils/package-json.js';
 import { ModuleType } from '../enums/module-type.enum.js';
+import { EsjOptions } from '../interfaces/esj-options.js';
+import { ConfigRender } from '../utils/config.render.js';
+import { createPrettierConfig } from '../templates/prettier/prettier.config.js';
 
-export async function buildPrettierConfig(options: Prompt) {
+export async function buildPrettierConfig(options: EsjOptions) {
   const packageJSON = PackageJsonFile.instance;
+  const configData = createPrettierConfig(options);
 
   if (packageJSON.moduleType === ModuleType.MODULE) {
-    EsjRender('prettier/prettier.config.module.ejs', 'prettier.config.mjs', options);
+    ConfigRender.writeModuleJs('prettier.config.mjs', configData);
   }
 
   if (packageJSON.moduleType === ModuleType.COMMON) {
-    EsjRender('prettier/prettier.config.common.ejs', 'prettier.config.cjs', options);
+    ConfigRender.writeCommonJs('prettier.config.cjs', configData);
   }
 
   if (packageJSON.moduleType === ModuleType.DEFAULT) {
-    EsjRender('prettier/prettier.config.default.ejs', '.prettierrc.json', options);
+    ConfigRender.writeJson('.prettierrc.json', configData);
   }
 }

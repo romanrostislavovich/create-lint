@@ -1,0 +1,29 @@
+import { EsjOptions } from '../../interfaces/esj-options.js';
+
+export function createMarkdownConfig(buildOptions: EsjOptions): any {
+  const config = {
+    default: true,
+    MD003: { style: 'atx' },
+    MD004: { style: 'dash' },
+    MD007: { indent: 2 },
+    MD009: { br_spaces: 2 },
+    MD013: false,
+    MD022: true,
+    MD024: { allow_different_nesting: true },
+    MD026: { punctuation: '.,;:!?' },
+    MD029: { style: 'one' },
+    MD030: { ul_single: 1, ol_single: 1, ul_multi: 1, ol_multi: 1 },
+    MD031: true,
+    MD032: true,
+    MD033: false,
+    MD034: true,
+    MD036: false,
+    MD038: true,
+    MD041: true,
+    MD046: { style: 'fenced' },
+    MD049: { style: 'consistent' },
+    MD050: { style: 'asterisk' },
+  };
+
+  return config;
+}

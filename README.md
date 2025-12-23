@@ -22,7 +22,7 @@
 - 🛠️ Can **automatically install all dependencies**
 - 💡 Works with **npm / yarn / pnpm** (your choice)
 - ✨ Fully built with **TypeScript** — safe, reliable, and modern
-- ⚙️ Can be added command to package.json file
+- ⚙️ Can be added command to **package.json** file
 
 ---
 
@@ -152,7 +152,6 @@ It will automatically adjust configs for Vue (`eslint-plugin-vue`) or Svelte
 git clone https://github.com/yourname/create-linting.git
 cd create-linting
 npm install
-npm run dev
 ```
 
 Modify code in `src/`, build with `npm run build`, and test using:

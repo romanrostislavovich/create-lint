@@ -3,8 +3,9 @@ import path from 'node:path';
 import fs from 'node:fs';
 import ejs from 'ejs';
 import { Prompt } from '../interfaces/prompt.js';
+import { EsjOptions } from '../interfaces/esj-options.js';
 
-export function EsjRender(fileName: string, resultFileName: string, options?: Prompt) {
+export function EsjRender(fileName: string, resultFileName: string, options?: EsjOptions) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 

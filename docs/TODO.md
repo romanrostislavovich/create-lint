@@ -14,3 +14,8 @@
 
 - [ ] commit-msg for husky
 - [ ] type of module for all tools
+- [ ] lint staged run with config file and refactor husky installation 
+
+## Architecture 
+
+- [ ] after install tool hook, for example `npx htmlhint --init` - create default configuration file

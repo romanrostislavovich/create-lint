@@ -1,5 +1,5 @@
 export enum ModuleType {
   MODULE = 'module',
-  COMMON = 'common',
+  COMMON = 'commonjs',
   DEFAULT = 'default',
 }

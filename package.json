@@ -1,6 +1,6 @@
 {
   "name": "create-linting",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "repository": "https://github.com/romanrostislavovich/create-lint",
   "bugs": "https://github.com/romanrostislavovich/create-lint/issues",
   "description": "Create linting configs (ESLint/Prettier/Stylelint/Husky) via CLI presets or interactive prompts.",
@@ -20,12 +20,11 @@
     "dev": "ts-node-esm src/index.ts",
     "lint": "npm run lint:eslint && npm run format:prettier && npm run lint:markdown",
     "prepare": "husky",
-    "lint:markdown": "markdownlint-cli2 -c ./.markdownlint.json **/*.md",
-    "lint:html": "htmlhint **/*.html",
     "copy-files": "copyfiles -a -u 1 src/templates/**/* dist/",
-    "lint:eslint": "eslint --fix",
-    "format:prettier": "prettier --write --check .",
-    "lint:style": "stylelint **/*.{scss,sass,css} -c ./stylelint.config.js --fix"
+    "format:prettier": "prettier --config prettier.config.mjs --write --check .",
+    "lint:html": "htmlhint --config ./.htmlhintrc **/*.html",
+    "lint:style": "stylelint **/*.{scss,sass,css} -c ./.stylelintrc.mjs --fix",
+    "lint:markdown": "markdownlint-cli2 -c ./.markdownlint-cli2.mjs **/*.md"
   },
   "keywords": [
     "eslint",

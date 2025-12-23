@@ -1,5 +1,0 @@
-export default {
-  extends: ['stylelint-config-standard'],
-  plugins: ['stylelint-order'],
-  rules: {},
-};
